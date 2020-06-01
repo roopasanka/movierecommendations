@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
 import MovieCard from './Moviecard';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,48 +9,6 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     display: 'block',
   },
-    cardContent: {
-      width: '100%',
-      height: 'auto',
-      display: 'flex',
-    },
-    cardLeft: {
-      width: '20%',
-  
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'left',
-      background: '#f5f5f5',
-      marginTop: '4px',
-      border: '#ccc',
-    },
-    cardRight: {
-      flexGrow: 1,
-    },
-    paperContent: {
-      marginBottom: '4px',
-    },
-    media: {
-      objectFit: 'none',
-      width: 'auto',
-    },
-    deviceInfo: {
-      flex: 'none',
-    },
-    summaryLabel: {
-      textAlign: 'left',
-      fontWeight: 'bold',
-    },
-    summaryLabelHeader: {
-      textAlign: 'right',
-      fontSize: '17px',
-      color: '#555',
-    },
-    summaryItem: {
-      textAlign: 'left',
-      paddingLeft: '12px',
-    },
   }));
 
 export function RankList(props) {
@@ -62,16 +19,18 @@ export function RankList(props) {
   return (
     <div className={classes.root}>
     {!id && (
-      movieList && movieList.map((movie, index) => (
+      movieList && movieList.map((movie) => (
         <MovieCard
           movie={movie}
+          key={id}
         />
       )) )}
-    {id && (
+    {id<=4 ? (
         <MovieCard
           movie={movieList[id-1]}
+          key={id}
         />
-       )}
+       ):(<div>Please select from range 1-5</div>)}
 
     </div>
   );

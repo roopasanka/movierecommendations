@@ -3,9 +3,9 @@ import * as types from './ActionTypes';
 
 export function getMoviesByRank(){
 const rankArray = [];
-movies.components.map((eachElement)=>{
+movies.components.forEach((eachElement)=>{
     if(eachElement.type === "movie-list"){
-        eachElement.items.map((eachItem) =>{
+        eachElement.items.forEach((eachItem) =>{
             rankArray[eachItem.rank -1] = eachItem;
         });
     }
@@ -15,7 +15,7 @@ return rankArray;
 
 export function getMoviesByRelease(){
     let releaseArray = [];
-    movies.components.map((eachElement)=>{
+    movies.components.forEach((eachElement)=>{
         if(eachElement.type === "movie-list"){
             releaseArray = eachElement.items;
             releaseArray.sort((movie, nextMovie)=>{
@@ -27,7 +27,7 @@ export function getMoviesByRelease(){
 }
 export function getMovieList(){
     let movieList = [];
-    movies.components.map((eachElement)=>{
+    movies.components.forEach((eachElement)=>{
         if(eachElement.type === "movie-list"){
             movieList = eachElement.items;
         }

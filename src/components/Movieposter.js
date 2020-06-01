@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default function MoviePoster(props) {
-  const { movie, width} = props;
+  const { movie } = props;
 
   return (
     <div>
@@ -11,6 +11,7 @@ export default function MoviePoster(props) {
         style={{
           marginLeft: '10', display: 'block',
         }}
+        alt=" "
       />
     </div>
   );

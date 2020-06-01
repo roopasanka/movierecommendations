@@ -61,11 +61,11 @@ function MainComponent(props) {
       {value === 'Rank'
             && (
   
-            <RankList id={match.params.id} movieList={moviesByRank}/>)}
+            <RankList key="MoviesByrank" id={match.params.id} movieList={moviesByRank}/>)}
       {value === 'Release Date'
             && (
   
-            <RankList id={match.params.id} movieList={moviesByRelease}/>)}
+            <RankList key="MoviesByrelease" id={match.params.id} movieList={moviesByRelease}/>)}
             </div>)}
   {match.params.id
   && (<RankList id={match.params.id}movieList={moviesByRank}/>)

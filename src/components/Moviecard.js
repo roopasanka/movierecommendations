@@ -3,13 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
 import MoviePoster from './Movieposter';
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
       objectFit: 'none',
       width: 'auto',
     },
-    deviceInfo: {
+    movieInfo: {
       flex: 'none',
     },
     summaryLabel: {
@@ -96,7 +94,7 @@ export function MovieCard(props) {
         </div>
         { expanded && (
         <div className={classes.cardRight}>
-          <Grid container className={classes.deviceInfo}>
+          <Grid container className={classes.movieInfo}>
 
             <Grid item xs={10}>
               <Grid container>
