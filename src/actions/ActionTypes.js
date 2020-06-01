@@ -1,0 +1,2 @@
+export const RANK_ACTION = 'RANK_ACTION';
+export const RELEASE_ACTION = 'RELEASE_ACTION';
