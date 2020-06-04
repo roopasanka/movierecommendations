@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 
 export default function MoviePoster(props) {
@@ -7,10 +8,9 @@ export default function MoviePoster(props) {
   return (
     <div>
       <img
+      data-testid = {"Image"}
         src={movie.imageUrl}
-        style={{
-          marginLeft: '10', display: 'block',
-        }}
+        className= "image"
         alt=" "
       />
     </div>

@@ -59,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'left',
       paddingLeft: '12px',
     },
+    iconbutton: {
+      fontSize: '17px',
+    }
   }));
 
 export function MovieCard(props) {
@@ -73,7 +76,7 @@ export function MovieCard(props) {
 
 
   return (
-    <Paper className={classes.paperContent} elevation={2}>
+    <Paper className={classes.paperContent} elevation={2} data-testid={"moviecard"}>
     <Card>
       <CardHeader
 
@@ -81,7 +84,7 @@ export function MovieCard(props) {
           <IconButton
             aria-label="settings"
             onClick={handleExpandClick}
-            style={{fontSize: '17px',}}
+            className={classes.iconbutton}
           >
           Show synopsis
           <ExpandMoreIcon/>
@@ -124,5 +127,5 @@ function mapStateToProps(state) {
     moviesByRank: state.moviesByRank,
   };
 }
-
-export default (connect(mapStateToProps)(MovieCard));
+const moviecard = connect(mapStateToProps)(MovieCard)
+export default moviecard;

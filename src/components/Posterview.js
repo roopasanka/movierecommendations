@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import '../App.css';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 
   root: {
     width: '100%',
     height: 'auto',
-    // display: 'block',
     marginLeft: '10px'
   },
   }));
@@ -19,7 +19,7 @@ export function PosterView(props) {
 
   return (
     <div className={classes.root}>
-      {movieList && movieList.map((movie, index) => (
+      {movieList && movieList.map((movie) => (
         <img
           key={movie.rank}
           src={movie.imageUrl}

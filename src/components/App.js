@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { Grid } from '@material-ui/core';
@@ -32,16 +32,48 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.primary,
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    // marginLeft: '250px',
   },
 }));
+// Hook
+function useWindowSize() {
+  const isClient = typeof window === 'object';
+  function getSize() {
+    return {
+      width: isClient ? +window.screen.availWidth : null,
+      height: isClient ? +window.screen.availHeight : null,
+    };
+  }
+
+  const [windowSize, setWindowSize] = useState(getSize);
+
+  useEffect(() => {
+    if (!isClient) {
+      return false;
+    }
+
+    function handleResize() {
+      setWindowSize(getSize());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
+
+  return windowSize;
+}
+
 
 function App(){
   const classes = useStyles();
-
+  const { width, height } = useWindowSize();
   return (
     <Provider store={store}>
-    <Grid data-testid="notice-div" className={classes.content}>
+        <Paper style={{
+            width: {width},
+            height: {height}
+          }}
+          data-testid='app'>
+    <Grid data-testid="notice-div" className="content">
           <Paper className={classes.paper}>
             <Typography variant="h5" component="p">
               Movie Recommendations
@@ -77,18 +109,7 @@ function App(){
 
 </Switch>
 </Router>
-    {/*<div data-testid="app-div">
-
-      <Grid data-testid="notice-div" className={classes.content}>
-          <Paper className={classes.paper}>
-            <Typography variant="h5" component="p">
-              Movie Recommendations
-            </Typography>
-          </Paper>
-      </Grid>
-      <MainComponent/>
-
-  </div> */}
+    </Paper>
     </Provider>
   );
 }

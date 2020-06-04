@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-function MainComponent(props) {
+export function MainComponent(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const {moviesByRank, moviesByRelease, moviesByList, match} = props;
@@ -47,7 +47,8 @@ function MainComponent(props) {
 
       && (<div>
       <FormControl component="fieldset">
-        <FormLabel component="legend"className={classes.formstyle}>Order By</FormLabel>
+        <FormLabel component="legend"className={classes.formstyle}
+        data-testid="orderby">Order By</FormLabel>
           <RadioGroup aria-label="Order By" name="Order List" value={value} className={classes.root} onChange={handleChange}>
               <FormControlLabel value="Rank" control={<Radio />} label="Rank" />
               <FormControlLabel value="Release Date" control={<Radio />} label="Release Date" />
@@ -80,5 +81,5 @@ function mapStateToProps(state) {
     moviesByList: state.moviesByList,
   };
 }
-
-export default (connect(mapStateToProps)(MainComponent));
+const Maincomp = connect(mapStateToProps)(MainComponent);
+export default Maincomp;
